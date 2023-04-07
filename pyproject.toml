@@ -1,0 +1,9 @@
+[project]
+name = "tasklist"
+dynamic = ["version"]
+
+[project.scripts]
+tl = "tasklist.tasklist:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "tasklist.__version__"}
