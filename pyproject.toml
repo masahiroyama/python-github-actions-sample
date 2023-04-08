@@ -1,9 +1,13 @@
 [project]
 name = "tasklist"
+description = "Task list application as a sample project."
 dynamic = ["version"]
 
 [project.scripts]
 tl = "tasklist.tasklist:main"
 
+[project.optional-dependencies]
+dev = ["pytest", "flake8", "mypy", "black", "isort"]
+
 [tool.setuptools.dynamic]
-version = {attr = "tasklist.__version__"}
+version = { attr = "tasklist.__version__" }
