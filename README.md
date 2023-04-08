@@ -12,8 +12,8 @@ This project shows how to use GitHub Actions with a Python project.
 | ------------ | ---------------------------------------------------------------------------------- |
 | List tasks   | User can see the all tasks that user added as list.                                |
 | Add tasks    | User can add tasks. title, due date, priority are able to input.                   |
-| Edit tasks   | User can edit the exisintg tasks. title, due date, priority are able to be edited. |
-| Detele tasks | Use can edit the existing tasks.                                                   |
+| Edit tasks   | User can edit the existing tasks. title, due date, priority are able to be edited. |
+| Delete tasks | Use can edit the existing tasks.                                                   |
 
 ## What do we do with GitHub Actions
 
