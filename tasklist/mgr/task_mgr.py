@@ -12,6 +12,8 @@ class TaskManager(object):
         self.read_data(data_path)
 
     def read_data(self, data_path):
+        self.data_path = data_path
+
         with open(data_path) as f:
             self.data = json.load(f)
 
