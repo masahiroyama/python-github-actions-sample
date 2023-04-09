@@ -2,6 +2,7 @@
 
 import os
 import json
+import datetime
 
 
 class TaskManager(object):
@@ -31,12 +32,16 @@ class TaskManager(object):
             json.dump({"tasks": [], "max_id": 0}, f, ensure_ascii=False)
 
     def add_task(self, name, due_date=None, priority=None):
-        task_id = self.data["max_id"] + 1
+        task_id = self.data["max_id"]
         self.data["tasks"].append(
             {
                 "id": task_id,
                 "name": name,
-                "due_date": due_date,
+                "due_date": datetime.datetime.strptime(
+                    due_date, "%Y/%m/%d"
+                ).date(),
                 "priority": priority,
             }
         )
+
+        self.data["max_id"] = task_id + 1
