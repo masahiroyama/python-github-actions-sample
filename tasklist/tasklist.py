@@ -20,6 +20,15 @@ def main():
         default="$HOME/.tl/task.json",
     )
     parser.add_argument(
+        "-d",
+        "--date",
+        help="set due date of the task with %Y/%m/%d format",
+        metavar="DUE DATE",
+    )
+    parser.add_argument(
+        "-p", "--priority", help="set priority: high, mid, low"
+    )
+    parser.add_argument(
         "-v", "--version", help="show version", action="store_true"
     )
 
@@ -33,5 +42,5 @@ def main():
     tmgr = TaskManager(data_path)
 
     if args.add:
-        tmgr.add_task(args.add)
+        tmgr.add_task(args.add, due_date=args.date, priority=args.priority)
         tmgr.write_data(data_path)
