@@ -1,0 +1,46 @@
+name: Test and format check
+on:
+  push:
+    branches:
+      - develop
+      - "feature/**"
+      - "hotfix/**"
+  pull_request:
+    branches:
+      - main
+      - "release/**"
+jobs:
+  pytest:
+    name: Test with pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install development dependencies
+        run: pip install '.[dev]'
+
+      - name: Run pytest
+        run: pytest
+  black:
+    name: Check code style with Black
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install development dependencies
+        run: pip install '.[dev]'
+
+      - name: Check code style with Black
+        run: black --check --diff --line-length-79 .
