@@ -21,7 +21,7 @@ class TaskManager(object):
     def write_data(self, data_path):
         def custom_default(obj):
             if isinstance(obj, datetime.date):
-                return obj.strftime('%Y/%m/%d')
+                return obj.strftime("%Y/%m/%d")
 
             raise TypeError("Type {} not serializable.".format(type(obj)))
 
