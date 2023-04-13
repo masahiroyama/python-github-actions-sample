@@ -44,3 +44,5 @@ def main():
     if args.add:
         tmgr.add_task(args.add, due_date=args.date, priority=args.priority)
         tmgr.write_data(data_path)
+    elif args.list:
+        tmgr.list_task()

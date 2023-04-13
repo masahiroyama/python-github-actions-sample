@@ -60,3 +60,48 @@ def test_add_task_with_due_date(test_file_path):
 
         if os.path.exists(test_file_path):
             os.remove(test_file_path)
+
+
+def test_list_task(test_file_path, capfd):
+    expected = """   ID | Task           | Due date   | Priority
+------+----------------+------------+------------
+    0 | Temp task name | 2023/12/31 | high
+    1 | Temp task name | 2023/12/31 | high
+"""
+
+    if os.path.exists(test_file_path):
+        os.remove(test_file_path)
+
+    for _ in range(2):
+        with patch(
+            "sys.argv",
+            [
+                "tl",
+                "-a",
+                "Temp task name",
+                "-f",
+                test_file_path,
+                "-d",
+                "2023/12/31",
+                "-p",
+                "high",
+            ],
+        ):
+            main()
+
+    with patch(
+        "sys.argv",
+        [
+            "tl",
+            "-l",
+            "-f",
+            test_file_path,
+        ],
+    ):
+        main()
+
+    if os.path.exists(test_file_path):
+        os.remove(test_file_path)
+
+    out, _ = capfd.readouterr()
+    assert out == expected

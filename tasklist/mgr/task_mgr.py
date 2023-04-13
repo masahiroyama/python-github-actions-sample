@@ -3,6 +3,7 @@
 import os
 import json
 import datetime
+import tabulate
 
 
 class TaskManager(object):
@@ -53,3 +54,19 @@ class TaskManager(object):
         )
 
         self.data["max_id"] = task_id + 1
+
+    def list_task(self):
+        table = []
+
+        for task in self.data["tasks"]:
+            table.append(
+                [task["id"], task["name"], task["due_date"], task["priority"]]
+            )
+
+        print(
+            tabulate.tabulate(
+                table,
+                headers=["ID", "Task", "Due date", "Priority"],
+                tablefmt="presto",
+            )
+        )
