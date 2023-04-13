@@ -2,6 +2,9 @@
 name = "tasklist"
 description = "Task list application as a sample project."
 dynamic = ["version"]
+dependencies = [
+    'tabulate'
+]
 
 [project.scripts]
 tl = "tasklist.tasklist:main"
